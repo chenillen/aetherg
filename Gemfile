@@ -8,7 +8,7 @@ gem 'mysql2'
 # gem 'pg' # if using postgresql 
 
 # ORM
-gem 'active_record', '~> 4.0.0'
+gem 'activerecord', '~> 4.0.0'
 # gem 'mongoid'
 
 group :development do
