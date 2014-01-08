@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     activemodel (4.0.1)
       activesupport (= 4.0.1)
@@ -43,9 +43,6 @@ GEM
       guard (>= 2.1.1)
       rspec (~> 2.14)
     http_parser.rb (0.5.3)
-    http_router (0.11.0)
-      rack (>= 1.0.0)
-      url_mount (~> 0.2.1)
     i18n (0.6.5)
     kgio (2.8.1)
     listen (2.2.0)
@@ -61,7 +58,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    rack (1.5.2)
+    rack (1.4.5)
     rack-protection (1.5.1)
       rack
     rainbows (4.5.0)
@@ -96,8 +93,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    url_mount (0.2.1)
-      rack
 
 PLATFORMS
   ruby
@@ -106,9 +101,8 @@ DEPENDENCIES
   activerecord (~> 4.0.0)
   guard-livereload
   guard-rspec
-  http_router
   mysql2
   rainbows
   rspec
-  sinatra
+  sinatra (~> 1.4.4)
   terminal-notifier-guard

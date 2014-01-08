@@ -1,7 +1,7 @@
-source "https://rubygems.org"
+source "http://ruby.taobao.org" 
+# source "https://rubygems.org" # Use rubygems if you're not in China
 
-gem 'sinatra'
-gem 'http_router'
+gem 'sinatra', '~> 1.4.4'
 
 # Database connection gem
 gem 'mysql2'
