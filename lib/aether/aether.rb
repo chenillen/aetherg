@@ -1,0 +1,83 @@
+module Aether
+  class Generator < Thor::Group
+    include Thor::Actions
+
+    desc "Create a new sinatra application with Aether"
+    argument :name, :type => :string, :desc => "What's the name of your application"
+    class_option :database, :aliases => "-d", :default => "mysql", :desc => "The type of database to use, sqlite, mysql, postgresql supported"
+    class_option :no_database, :type => :boolean, :desc => "Exclude all database configuration files"
+    class_option :redis, :type => :boolean, :desc => "Include Redis configuration"
+
+    # Creates instance variables from options passed to Aether
+
+    def setup
+      @name = @app_path = name.filename
+      options.each do |key, value|
+        instance_variable_set "@#{key.to_s}".to_sym, value
+      end
+    end
+
+    def self.source_root
+      File.expand_path(File.join(File.dirname(__FILE__), "..", "templates"))
+    end
+
+    # Create empty directories
+    def create_empty_directories
+      %w{app/assets/images app/assets/javascripts app/assets/stylesheets app/models app/routes app/views config/initializers db/migrate lib log tmp public}.each do |dir|
+        empty_directory File.join(@app_path, dir)
+      end
+    end
+
+     def create_app
+       template "application.rb", File.join(@app_path, "application.rb")
+     end
+
+     def create_config_with_boot
+       template "config.ru", File.join(@app_path, "config.ru")
+       template "boot.rb", File.join(@app_path, "boot.rb")
+     end
+
+     def create_gemfile
+       template "Gemfile", File.join(@app_path, "Gemfile")
+     end
+
+     def create_rakefile
+       template "Rakefile", File.join(@app_path, "Rakefile")
+     end
+     #
+     def create_readme
+       template "README.md", File.join(@app_path, "README.md")
+     end
+     #
+    #  def create_server_config
+    #    template "config/puma.rb", File.join(@app_path, "config/puma.rb")
+    #  end
+     #
+    #  def create_db_config
+    #    template("config/db.yml", File.join(@app_path, "config/db.yml")) unless @no_database
+    #  end
+     #
+    #  def create_database_initializer
+    #    template("config/initializers/database.rb", File.join(@app_path, "config/initializers/database.rb")) unless @no_database
+    #  end
+
+    #  def create_redis_config
+    #    copy_file("config/redis.yml", File.join(@app_path, "config/redis.yml")) if @redis
+    #  end
+
+    #  def create_redis_initializer
+    #    template("config/initializers/redis.rb", File.join(@app_path, "config/initializers/redis.rb")) if @redis
+    #  end
+
+     def create_gitkeep
+       create_file File.join(@app_path, "app", "assets", "images", ".keep")
+       create_file File.join(@app_path, "app", "assets", "stylesheets", ".keep")
+       create_file File.join(@app_path, "app", "assets", "javascripts", ".keep")
+       create_file File.join(@app_path, "app", "models", ".keep")
+       create_file File.join(@app_path, "app", "routes", ".keep")
+       create_file File.join(@app_path, "app", "views", ".keep")
+       create_file File.join(@app_path, "lib", ".keep")
+       create_file File.join(@app_path, "public", ".keep")
+     end
+  end
+end

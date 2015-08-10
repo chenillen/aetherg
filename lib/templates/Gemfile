@@ -1,0 +1,36 @@
+source "http://ruby.taobao.org"
+# source "https://rubygems.org" # Use rubygems if you're not in China
+
+gem 'sinatra', '~> 1.4.6'
+
+<%- if @no_database -%>
+# Sequel currently has adapters for ADO, Amalgalite, CUBRID, DataObjects, IBM_DB, JDBC, MySQL, Mysql2, ODBC, Oracle, PostgreSQL, SQLAnywhere, SQLite3, Swift, and TinyTDS.
+gem 'sequel'
+<%- elsif @database == 'postgresql' || @database == 'pg' -%>
+gem 'pg'
+<%- elsif @database == 'sqlite' -%>
+gem 'sqlite3'
+<%- elsif @database == 'mongo' || @database == 'mongodb' -%>
+gem 'mongoid'
+<%- else -%>
+# default database: mysql
+gem 'mysql2'
+<%- end -%>
+<%- if @redis -%>
+gem 'redis'
+<%- end -%>
+
+group :development, :test do
+  gem 'rspec'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
+  gem 'database_cleaner'
+end
+
+group :development, :production do
+  # web app servers
+  # gem 'unicorn'
+  # gem 'rainbows'
+  gem 'puma'
+end
