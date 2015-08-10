@@ -6,7 +6,20 @@ Gem::Specification.new do |s|
   s.description = "Aether is a sinatra based App generator, let you quickly generate a sinatra app."
   s.authors     = ["Allen Chan"]
   s.email       = 'chenillen@gmail.com'
-  s.files       = ["lib/aether.rb"]
+  s.extra_rdoc_files = [
+    "LICENSE",
+    "README.md"
+  ]
+  s.files       = [
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE",
+    "README.md",
+    "VERSION",
+    "bin/aether",
+    "lib/aether.rb"
+  ]
+  s.require_paths = ["lib"]
   s.homepage    =
     'http://rubygems.org/gems/aether'
   s.license       = 'MIT'
