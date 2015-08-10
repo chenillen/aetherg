@@ -11,7 +11,7 @@ production: "postgres://<%= `whoami`.chop %>@localhost/<%= @name %>_production"
 development: "mysql2://<%= `whoami`.chop %>@localhost/<%= @name %>_development"
 test: "mysql2://<%= `whoami`.chop %>@localhost/<%= @name %>_test"
 production: "mysql2://<%= `whoami`.chop %>@localhost/<%= @name %>_production"
-<% elsif @database == "mongo" %>
+<% elsif @database == "mongo" || @database == "mongodb" %>
 development:
   host: localhost
   port: 27017

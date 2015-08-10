@@ -61,10 +61,12 @@ module Aether
        copy_file "config/settings.yml", File.join(@app_path, "config/settings.yml")
      end
 
-     #
-    #  def create_database_initializer
-    #    template("config/initializers/database.rb", File.join(@app_path, "config/initializers/database.rb")) unless @no_database
-    #  end
+     def create_initializers
+       template("config/initializers/connection.rb", File.join(@app_path, "config/initializers/connection.rb")) unless @no_database
+       template("config/initializers/helpers.rb", File.join(@app_path, "config/initializers/helpers.rb"))
+       template("config/initializers/environment.rb", File.join(@app_path, "config/initializers/environment.rb"))
+       template("config/initializer.rb", File.join(@app_path, "config/initializer.rb"))
+     end
 
     #  def create_redis_config
     #    copy_file("config/redis.yml", File.join(@app_path, "config/redis.yml")) if @redis
