@@ -44,18 +44,23 @@ module Aether
      def create_rakefile
        template "Rakefile", File.join(@app_path, "Rakefile")
      end
-     #
+
      def create_readme
        template "README.md", File.join(@app_path, "README.md")
      end
+
+     def create_server_config
+       copy_file "config/puma.rb", File.join(@app_path, "config/puma.example.rb")
+     end
      #
-    #  def create_server_config
-    #    template "config/puma.rb", File.join(@app_path, "config/puma.rb")
-    #  end
-     #
-    #  def create_db_config
-    #    template("config/db.yml", File.join(@app_path, "config/db.yml")) unless @no_database
-    #  end
+     def create_db_config
+       template("config/database.yml", File.join(@app_path, "config/database.yml")) unless @no_database
+     end
+
+     def create_settings_config
+       copy_file "config/settings.yml", File.join(@app_path, "config/settings.yml")
+     end
+
      #
     #  def create_database_initializer
     #    template("config/initializers/database.rb", File.join(@app_path, "config/initializers/database.rb")) unless @no_database
