@@ -2,9 +2,8 @@ source "http://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
 gem 'sinatra', '~> 1.4.6', require: false
-
 <%- unless @no_database -%>
-gem 'active_record', '~> 4.2.2'
+gem 'activerecord', '~> 4.2.3'
 <%- if @database == 'postgresql' || @database == 'pg' -%>
 gem 'pg'
 <%- elsif @database == 'sqlite' -%>
@@ -21,6 +20,9 @@ gem 'redis'
 <%- end -%>
 
 group :development, :test do
+  gem 'shotgun'
+  gem 'pry'
+  gem 'racksh'
   gem 'rspec'
   gem 'guard-rspec'
   gem 'guard-livereload'
