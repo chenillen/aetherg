@@ -68,13 +68,12 @@ module Aether
        template("config/initializer.rb", File.join(@app_path, "config/initializer.rb"))
      end
 
-    #  def create_redis_config
-    #    copy_file("config/redis.yml", File.join(@app_path, "config/redis.yml")) if @redis
-    #  end
-
-    #  def create_redis_initializer
-    #    template("config/initializers/redis.rb", File.join(@app_path, "config/initializers/redis.rb")) if @redis
-    #  end
+     def create_redis_config_and_initializer
+       if @redis
+         copy_file("config/redis.yml", File.join(@app_path, "config/redis.yml"))
+         template("config/initializers/redis.rb", File.join(@app_path, "config/initializers/redis.rb"))
+       end
+     end
 
      def create_gitkeep
        create_file File.join(@app_path, "app", "assets", "images", ".keep")
@@ -84,6 +83,7 @@ module Aether
        create_file File.join(@app_path, "app", "routes", ".keep")
        create_file File.join(@app_path, "app", "views", ".keep")
        create_file File.join(@app_path, "lib", ".keep")
+       create_file File.join(@app_path, "db", "migrate", ".keep")
        create_file File.join(@app_path, "public", ".keep")
      end
   end
