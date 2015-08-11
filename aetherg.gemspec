@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.1.1'
+  s.version     = '0.1.2'
   s.date        = '2015-08-11'
   s.summary     = "Aetherg (Aether Generator) is aether generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
   ]
   s.require_paths = ["lib"]
   s.bindir = 'bin'
+  s.executables = ['aetherg']
   s.homepage    =
     'http://rubygems.org/gems/aetherg'
   s.license       = 'MIT'
