@@ -1,0 +1,38 @@
+source "http://ruby.taobao.org"
+# source "https://rubygems.org" # Use rubygems if you're not in China
+
+gem 'sinatra', '~> 1.4.6', require: false
+<%- unless @no_database -%>
+gem 'activerecord', '~> 4.2.3'
+<%- if @database == 'postgresql' || @database == 'pg' -%>
+gem 'pg'
+<%- elsif @database == 'sqlite' -%>
+gem 'sqlite3'
+<%- elsif @database == 'mongo' || @database == 'mongodb' -%>
+gem 'mongoid'
+<%- else -%>
+# default database: mysql
+gem 'mysql2'
+<%- end -%>
+<%- if @redis -%>
+gem 'redis'
+<%- end -%>
+<%- end -%>
+
+group :development, :test do
+  gem 'shotgun'
+  gem 'pry'
+  gem 'racksh'
+  gem 'rspec'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
+  gem 'database_cleaner'
+end
+
+group :development, :production do
+  # web app servers
+  # gem 'unicorn'
+  # gem 'rainbows'
+  gem 'puma'
+end

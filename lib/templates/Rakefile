@@ -1,0 +1,8 @@
+require "./application"
+
+desc "Default task"
+namespace :<%= @name %> do
+  task :default do
+    puts "Hello #{@name}"
+  end
+end
