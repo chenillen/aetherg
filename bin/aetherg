@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib"))) unless $:.include? File.expand_path(File.join(File.dirname(__FILE__), "..", "lib"))
-require "aether"
+require "aetherg"
 
-Aether::Generator.start
+Aetherg::Generator.start

@@ -1,4 +1,4 @@
-module Aether
+module Aetherg
   class Generator < Thor::Group
     include Thor::Actions
 

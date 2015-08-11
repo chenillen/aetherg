@@ -1,11 +1,11 @@
 =======
-Aether
+Aetherg
 ======
 
 Description
 -----------
 
-Aether is a self-used web service framework template. Based on sinatra, simply and lightweight.
+Aetherg (Aether Generator) is a sinatra application generator. Light-weight MVC framework.
 
 Definition
 ----------
@@ -14,11 +14,11 @@ Definition
 
 Installation
 -----
-`gem install aether`
+`gem install aetherg`
 
 Usage
 -----
-* `aether MY_APP -d mysql`
+* `aetherg MY_APP -d mysql`
 * `-d` with database options. "postgresql," "mysql," "sqlite",
    and "mongodb." Default is "mysql."
 * `--no-database` Don't include any database config options.
