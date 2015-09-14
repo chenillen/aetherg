@@ -23,7 +23,7 @@ module Aetherg
 
     # Create empty directories
     def create_empty_directories
-      %w{app/assets/images app/assets/javascripts app/assets/stylesheets app/models app/routes app/views config/initializers db/migrate lib log tmp public}.each do |dir|
+      %w{app/assets/images app/assets/javascripts app/assets/stylesheets app/models app/helpers app/routes app/views config/initializers db/migrate lib log tmp public}.each do |dir|
         empty_directory File.join(@app_path, dir)
       end
     end
@@ -54,11 +54,15 @@ module Aetherg
      end
      #
      def create_db_config
-       template("config/database.yml", File.join(@app_path, "config/database.yml")) unless @no_database
+       template("config/database.yml", File.join(@app_path, "config/database.example.yml")) unless @no_database
      end
 
      def create_settings_config
-       copy_file "config/settings.yml", File.join(@app_path, "config/settings.yml")
+       copy_file "config/settings.yml", File.join(@app_path, "config/settings.example.yml")
+     end
+
+     def create_gitignore
+       copy_file "gitignore", File.join(@app_path, ".gitignore")
      end
 
      def create_initializers
