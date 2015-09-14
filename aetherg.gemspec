@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.bindir = 'bin'
   s.executables = ['aetherg']
-  s.add_runtime_dependency("thor")
+  s.add_runtime_dependency('thor', '~> 0.19')
   s.required_ruby_version = '>= 1.9.3'
   s.homepage    =
     'https://github.com/octomusic/aetherg'
