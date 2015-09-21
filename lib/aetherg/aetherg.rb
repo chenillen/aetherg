@@ -2,7 +2,7 @@ module Aetherg
   class Generator < Thor::Group
     include Thor::Actions
 
-    desc "Create a new sinatra application with Aether"
+    desc "Create a new sinatra application with aetherg"
     argument :name, :type => :string, :desc => "What's the name of your application"
     class_option :database, :aliases => "-d", :default => "mysql", :desc => "The type of database to use, sqlite, mysql, postgresql supported"
     class_option :no_database, :type => :boolean, :desc => "Exclude all database configuration files"
@@ -55,10 +55,12 @@ module Aetherg
      #
      def create_db_config
        template("config/database.yml", File.join(@app_path, "config/database.example.yml")) unless @no_database
+       template("config/database.yml", File.join(@app_path, "config/database.yml")) unless @no_database
      end
 
      def create_settings_config
        copy_file "config/settings.yml", File.join(@app_path, "config/settings.example.yml")
+       copy_file "config/settings.yml", File.join(@app_path, "config/settings.yml")
      end
 
      def create_gitignore
@@ -90,5 +92,6 @@ module Aetherg
        create_file File.join(@app_path, "db", "migrate", ".keep")
        create_file File.join(@app_path, "public", ".keep")
      end
+
   end
 end
