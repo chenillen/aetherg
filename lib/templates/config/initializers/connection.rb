@@ -1,7 +1,8 @@
 class <%= @name.camelcase %>::Application
-  <% unless @no_database -%>
+  <%- unless @no_database -%>
   default_dbconfig_file = File.expand_path('../../../config/database.yml', __FILE__)
-  <% if @database != 'mongo' || @database != 'mongodb' -%>
+  <%- if @database != 'mongo' || @database != 'mongodb' -%>
+
   # ActiveRecord connection
   require 'active_record'
   if File.exist? default_dbconfig_file
