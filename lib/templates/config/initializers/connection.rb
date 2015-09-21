@@ -15,4 +15,5 @@ class <%= @name.camelcase %>::Application
   Mongoid.load!(default_dbconfig_file, environment)
   <% end -%>
   <% end -%>
+
 end

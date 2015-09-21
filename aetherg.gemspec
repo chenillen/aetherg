@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.1.7'
-  s.date        = '2015-09-14'
-  s.summary     = "Aetherg (Aether Generator) is aether generator of sinatra app."
+  s.version     = '0.1.8'
+  s.date        = '2015-09-21'
+  s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
   s.authors     = ["Allen Chan"]
   s.email       = 'chenillen@gmail.com'
@@ -43,8 +43,10 @@ Gem::Specification.new do |s|
     "lib/templates/config/settings.yml",
     "lib/templates/config.ru",
     "lib/templates/Gemfile",
+    "lib/templates/gitignore",
     "lib/templates/Rakefile",
     "lib/templates/README.md"
+
   ]
   s.require_paths = ["lib"]
   s.bindir = 'bin'
