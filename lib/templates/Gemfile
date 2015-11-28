@@ -1,4 +1,4 @@
-source "http://ruby.taobao.org"
+source "https://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
 gem 'sinatra', '~> 1.4.6', require: false
