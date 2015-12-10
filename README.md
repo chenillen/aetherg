@@ -1,5 +1,8 @@
 =======
 Aetherg
+
+[![Gem Version](https://badge.fury.io/rb/aetherg.svg)](https://badge.fury.io/rb/aetherg)
+
 ======
 
 Description
