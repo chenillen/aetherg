@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.2.1'
-  s.date        = '2015-11-28'
+  s.version     = '0.2.2'
+  s.date        = '2015-12-21'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
   s.authors     = ["Allen Chan"]
@@ -54,6 +54,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('thor', '~> 0.19')
   s.required_ruby_version = '>= 1.9.3'
   s.homepage    =
-    'https://github.com/octomusic/aetherg'
+    'https://github.com/chenillen/aetherg'
   s.license       = 'MIT'
 end

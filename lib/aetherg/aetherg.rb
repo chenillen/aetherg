@@ -59,8 +59,8 @@ module Aetherg
      end
 
      def create_settings_config
-       copy_file "config/settings.yml", File.join(@app_path, "config/settings.example.yml")
-       copy_file "config/settings.yml", File.join(@app_path, "config/settings.yml")
+       template("config/settings.yml", File.join(@app_path, "config/settings.example.yml"))
+       template("config/settings.yml", File.join(@app_path, "config/settings.yml"))
      end
 
      def create_gitignore

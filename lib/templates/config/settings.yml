@@ -1,7 +1,7 @@
 default: &default
-  name: "API"
-  description: "API awesome!"
-  url: "https://api.yu.fm/"
+  name: "<%= @name.camelcase %>"
+  description: "<%= @name.camelcase  %> API awesome!"
+  url: "https://<%= @name.filename %>.com/"
 
 development:
   <<: *default
