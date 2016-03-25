@@ -3,10 +3,11 @@ module Aetherg
     include Thor::Actions
 
     desc "Create a new sinatra application with aetherg"
-    argument :name, :type => :string, :desc => "What's the name of your application"
-    class_option :database, :aliases => "-d", :default => "mysql", :desc => "The type of database to use, sqlite, mysql, postgresql supported"
-    class_option :no_database, :type => :boolean, :desc => "Exclude all database configuration files"
-    class_option :redis, :type => :boolean, :desc => "Include Redis configuration"
+    argument :name, type: :string, desc: "What's the name of your application"
+    class_option :database, aliases: "-d", default: "mysql", desc: "The type of database to use, sqlite, mysql, postgresql supported"
+    class_option :no_database, type: :boolean, desc: "Exclude all database configuration files"
+    class_option :redis, type: :boolean, desc: "Include Redis configuration"
+    class_option :no_views, type: :boolean, desc: "Disable/Enable views, default: true"
 
     # Creates instance variables from options passed to Aether
 
@@ -23,9 +24,13 @@ module Aetherg
 
     # Create empty directories
     def create_empty_directories
-      %w{app/assets/images app/assets/javascripts app/assets/stylesheets app/models app/helpers app/routes app/views config/initializers db/migrate lib log tmp public}.each do |dir|
+      %w{app/models app/helpers app/routes config/initializers db/migrate lib log tmp}.each do |dir|
         empty_directory File.join(@app_path, dir)
       end
+
+      %w{app/assets app/assets/images app/assets/javascripts app/assets/stylesheets app/views public}.each do |dir|
+        empty_directory File.join(@app_path, dir)
+      end unless @no_views
     end
 
      def create_app
@@ -82,15 +87,17 @@ module Aetherg
      end
 
      def create_gitkeep
-       create_file File.join(@app_path, "app", "assets", "images", ".keep")
-       create_file File.join(@app_path, "app", "assets", "stylesheets", ".keep")
-       create_file File.join(@app_path, "app", "assets", "javascripts", ".keep")
+       create_file File.join(@app_path, "app", "assets", "images", ".keep") unless @no_views
+       create_file File.join(@app_path, "app", "assets", "stylesheets", ".keep") unless @no_views
+       create_file File.join(@app_path, "app", "assets", "javascripts", ".keep") unless @no_views
        create_file File.join(@app_path, "app", "models", ".keep")
        create_file File.join(@app_path, "app", "routes", ".keep")
+       create_file File.join(@app_path, "log", ".keep")
+       create_file File.join(@app_path, "tmp", ".keep")
        create_file File.join(@app_path, "app", "views", ".keep")
        create_file File.join(@app_path, "lib", ".keep")
        create_file File.join(@app_path, "db", "migrate", ".keep")
-       create_file File.join(@app_path, "public", ".keep")
+       create_file File.join(@app_path, "public", ".keep") unless @no_views
      end
 
   end

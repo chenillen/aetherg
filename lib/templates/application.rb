@@ -4,7 +4,9 @@ module <%= @name.camelcase %>
   class Application < Sinatra::Base
 
     set :root, File.dirname(__FILE__)
+    <%- unless @no_views -%>
     set :public_dir, File.expand_path('../public', __FILE__)
+    <%- end -%>
     set :raise_errors, true
     set :app_file, __FILE__
 

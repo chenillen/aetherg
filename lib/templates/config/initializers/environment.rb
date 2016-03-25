@@ -4,11 +4,15 @@ class <%= @name.camelcase %>::Application
   end
 
   set :sessions, true
+  <%- unless @no_views -%>
   set :views, Proc.new { File.join(root, "/app/views") }
+  <%- end -%>
 
   configure do
     enable :logging
+    <%- unless @no_views -%>
     enable :static_cache_control
+    <%- end -%>
     file = File.new("#{root}/log/#{environment.to_s}.log", 'a+')
 
     <%- unless @no_database || @database == 'mongodb' || @database == 'mongo' -%>
@@ -22,8 +26,10 @@ class <%= @name.camelcase %>::Application
     # use Rack::Session::Cookie, secret: $app_settings["csrf_token"]
     # use Rack::Csrf, :raise => true
 
+    <%- unless @no_views -%>
     # set layouts
     set :erb, :layout => :'layouts/application', :escape_html => true
+    <%- end -%>
   end
 
 end

@@ -25,8 +25,8 @@ Usage
 * `-d` with database options. "postgresql," "mysql," "sqlite",
    and "mongodb." Default is "mysql."
 * `--no-database` Don't include any database config options.
+* `--no-views` Don't use views, only for API.
 
 Copyright
 -----
-Copyright (c) 2015 Allen Chan @ Octo Music, Inc. See LISENCE for detail.
-
+Copyright (c) 2016 Allen Chan, Inc. See LISENCE for detail.

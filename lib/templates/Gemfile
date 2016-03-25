@@ -1,7 +1,7 @@
 source "https://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
-gem 'sinatra', '~> 1.4.6', require: false
+gem 'sinatra', '~> 1.4.7', require: 'sinatra/base'
 gem 'rake'
 <%- unless @no_database -%>
 gem 'activerecord'
@@ -13,7 +13,7 @@ gem 'sqlite3'
 gem 'mongoid'
 <%- else -%>
 # default database: mysql
-gem 'mysql2', '~> 0.3.20'
+gem 'mysql2', '~> 0.4.3'
 <%- end -%>
 <%- if @redis -%>
 gem 'redis'

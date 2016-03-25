@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.2.2'
-  s.date        = '2015-12-21'
+  s.version     = '0.2.5'
+  s.date        = '2016-03-25'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
   s.authors     = ["Allen Chan"]
