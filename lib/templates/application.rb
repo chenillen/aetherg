@@ -10,7 +10,7 @@ module <%= @name.camelcase %>
     set :raise_errors, true
     set :app_file, __FILE__
 
-    AUTOLOAD_PATHS = ["#{root}/app/models", "#{root}/app/routes", "#{root}/lib"]
+    AUTOLOAD_PATHS = ["#{root}/app/*", "#{root}/lib"]
 
     def self.require_autoload_paths(paths)
       paths.each do |path|

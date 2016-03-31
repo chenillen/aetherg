@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.2.5'
-  s.date        = '2016-03-25'
+  s.version     = '0.2.6'
+  s.date        = '2016-03-31'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
   s.authors     = ["Allen Chan"]
@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
     "lib/aetherg.rb",
     "lib/templates",
     "lib/templates/app",
-    "lib/templates/app/controllers",
-    "lib/templates/app/controllers/routes.rb",
+    "lib/templates/app/routes",
+    "lib/templates/app/routes/welcome.rb",
     "lib/templates/app/helpers",
     "lib/templates/app/models",
     "lib/templates/application.rb",
@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
     "lib/templates/config/initializers",
     "lib/templates/config/initializers/connection.rb",
     "lib/templates/config/initializers/environment.rb",
-    "lib/templates/config/initializers/helpers.rb",
     "lib/templates/config/initializers/redis.rb",
     "lib/templates/config/puma.rb",
     "lib/templates/config/redis.yml",
