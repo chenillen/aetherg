@@ -1,7 +1,13 @@
 class <%= @name.camelcase %>::Application
+  <%- unless @no_views -%>
   before do
     content_type 'text/html'
   end
+  <%- else -%>
+  before do
+    content_type 'application/vnd.api+json'
+  end
+  <%- end -%>
 
   <%- unless @no_views -%>
   set :views, Proc.new { File.join(root, "/app/views") }
@@ -21,10 +27,9 @@ class <%= @name.camelcase %>::Application
     file.sync = true
     use Rack::CommonLogger, file
 
-    # set CSRF
-
     <%- unless @no_views -%>
-    use Rack::Session::Cookie, key: _<%= @name %>.session, secret: $app_settings["csrf_token"]
+    # set CSRF
+    use Rack::Session::Cookie, key: '_<%= @name %>.session', secret: $app_settings['csrf_token']
     use Rack::Csrf, :raise => true
     <%- end %>
 
