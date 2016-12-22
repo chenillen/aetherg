@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.2.6'
-  s.date        = '2016-03-31'
+  s.version     = '0.3.0'
+  s.date        = '2016-12-22'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
-  s.description = "Aetherg (Aether Generator) is a sinatra based App generator, let you quickly generate a sinatra app."
+  s.description = "Aetherg (Aether Generator) is a sinatra based App generator. Light-weight for API service or full-stack Web apps"
   s.authors     = ["Allen Chan"]
   s.email       = 'chenillen@gmail.com'
   s.extra_rdoc_files = [
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "lib/aetherg",
     "lib/aetherg/aetherg.rb",
     "lib/aetherg/string.rb",
+    "lib/aetherg/version.rb",
     "lib/aetherg.rb",
     "lib/templates",
     "lib/templates/app",
@@ -34,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/templates/config/database.yml",
     "lib/templates/config/initializer.rb",
     "lib/templates/config/initializers",
+    "lib/templates/config/initializers/assets.rb",
     "lib/templates/config/initializers/connection.rb",
     "lib/templates/config/initializers/environment.rb",
     "lib/templates/config/initializers/redis.rb",
@@ -45,7 +47,6 @@ Gem::Specification.new do |s|
     "lib/templates/gitignore",
     "lib/templates/Rakefile",
     "lib/templates/README.md"
-
   ]
   s.require_paths = ["lib"]
   s.bindir = 'bin'
@@ -53,6 +54,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('thor', '~> 0.19')
   s.required_ruby_version = '>= 1.9.3'
   s.homepage    =
-    'https://github.com/chenillen/aetherg'
+  'https://github.com/chenillen/aetherg'
   s.license       = 'MIT'
 end
