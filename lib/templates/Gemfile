@@ -20,6 +20,11 @@ gem 'redis'
 <%- end -%>
 <%- end -%>
 
+<%- unless @no_views -%>
+# Rack csrf gem for authentication of form post action
+gem 'rack_csrf', require: "rack/csrf"
+<%- end %>
+
 group :development, :test do
   gem 'shotgun'
   gem 'pry'

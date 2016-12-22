@@ -3,7 +3,6 @@ class <%= @name.camelcase %>::Application
     content_type 'text/html'
   end
 
-  set :sessions, true
   <%- unless @no_views -%>
   set :views, Proc.new { File.join(root, "/app/views") }
   <%- end -%>
@@ -23,8 +22,11 @@ class <%= @name.camelcase %>::Application
     use Rack::CommonLogger, file
 
     # set CSRF
-    # use Rack::Session::Cookie, secret: $app_settings["csrf_token"]
-    # use Rack::Csrf, :raise => true
+
+    <%- unless @no_views -%>
+    use Rack::Session::Cookie, key: _<%= @name %>.session, secret: $app_settings["csrf_token"]
+    use Rack::Csrf, :raise => true
+    <%- end %>
 
     <%- unless @no_views -%>
     # set layouts
