@@ -21,6 +21,15 @@ gem 'redis'
 <%- end -%>
 
 <%- unless @no_views -%>
+# with assetpack, using sass, and uglifier
+# assetpack support by compass configure when using scss/sass import
+gem 'sinatra-assetpack', require: 'sinatra/assetpack'
+gem 'compass'
+gem 'sass'
+gem 'uglifier'
+<%- end %>
+
+<%- unless @no_views -%>
 # Rack csrf gem for authentication of form post action
 gem 'rack_csrf', require: "rack/csrf"
 <%- end %>
