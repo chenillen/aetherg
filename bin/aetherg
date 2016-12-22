@@ -3,4 +3,9 @@
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib"))) unless $:.include? File.expand_path(File.join(File.dirname(__FILE__), "..", "lib"))
 require "aetherg"
 
+if ARGV[0] == "--version" || ARGV[0] == "-v"
+  puts "Aetherg v#{Aetherg::VERSION}(#{Aetheg::BUILD})"
+  exit
+end
+
 Aetherg::Generator.start
