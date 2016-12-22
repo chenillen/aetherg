@@ -28,7 +28,7 @@ module Aetherg
         empty_directory File.join(@app_path, dir)
       end
 
-      %w{app/assets app/assets/images app/assets/javascripts app/assets/stylesheets app/assets/fonts app/views public}.each do |dir|
+      %w{app/assets app/assets/images app/assets/javascripts app/assets/stylesheets app/assets/fonts app/views app/views/layouts public}.each do |dir|
         empty_directory File.join(@app_path, dir)
       end unless @no_views
     end
@@ -36,6 +36,12 @@ module Aetherg
     def create_app
       template "application.rb", File.join(@app_path, "application.rb")
       template "app/routes/welcome.rb", File.join(@app_path, "/app/routes/welcome.rb")
+    end
+
+    def create_views_layout
+      unless @no_views
+        template "app/views/layouts/application.erb", File.join(@app_path, "/app/views/layouts/application.erb")
+      end
     end
 
     def create_config_with_boot
@@ -101,7 +107,7 @@ module Aetherg
       create_file File.join(@app_path, "app", "routes", ".keep")
       create_file File.join(@app_path, "log", ".keep")
       create_file File.join(@app_path, "tmp", ".keep")
-      create_file File.join(@app_path, "app", "views", ".keep")
+      create_file File.join(@app_path, "app", "views", ".keep") unless @no_views
       create_file File.join(@app_path, "lib", ".keep")
       create_file File.join(@app_path, "db", "migrate", ".keep")
       create_file File.join(@app_path, "public", ".keep") unless @no_views
