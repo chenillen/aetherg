@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.3.0'
+  s.version     = '0.3.1'
   s.date        = '2016-12-22'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator. Light-weight for API service or full-stack Web apps"
