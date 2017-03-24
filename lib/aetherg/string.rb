@@ -1,4 +1,4 @@
-module Aether
+module Aetherg
   module String
     def camelcase
       return self.gsub(/^./) { |l| l.capitalize } if !match(/[_-]/)
@@ -28,7 +28,18 @@ module Aether
     def filename!
       self.replace file_name
     end
+
+    def present?
+      !self.nil? && !self.empty?
+    end
+  end
+
+  module Array
+    def present?
+      !self.nil? && !self.empty?
+    end
   end
 end
 
-String.send(:include, Aether::String)
+String.send(:include, Aetherg::String)
+Array.send(:include, Aetherg::Array)

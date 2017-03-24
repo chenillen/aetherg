@@ -1,3 +1,6 @@
+require File.expand_path('../array', __FILE__)
+require File.expand_path('../string', __FILE__)
+
 module Aetherg
   class Generator < Thor::Group
     include Thor::Actions
@@ -5,17 +8,21 @@ module Aetherg
     desc "Create a new sinatra application with aetherg"
     argument :name, type: :string, desc: "What's the name of your application"
     class_option :database, aliases: "-d", default: "mysql", desc: "The type of database to use, sqlite, mysql, postgresql supported"
-    class_option :no_database, type: :boolean, desc: "Exclude all database configuration files"
-    class_option :redis, type: :boolean, desc: "Include Redis configuration"
-    class_option :no_views, type: :boolean, desc: "Disable/Enable views, default: true"
+    class_option :no_database, aliases: '-D', type: :boolean, default: false, desc: "Exclude all database configuration files"
+    class_option :no_redis, aliases: '-R', type: :boolean, default: false, desc: "Include Redis configuration"
+    class_option :no_views, aliases: '-V', type: :boolean, default: false, desc: "Disable views, will not generate views of the project"
 
     # Creates instance variables from options passed to Aether
 
     def setup
       @name = @app_path = name.filename
-      options.each do |key, value|
-        instance_variable_set "@#{key.to_s}".to_sym, value
-      end
+      # options.each do |key, value|
+      #   instance_variable_set "@#{key.to_s}".to_sym, value
+      # end
+      @database = options[:database]
+      options[:no_database]? @no_database = true : @no_database = false
+      options[:no_redis]? @no_redis = true : @no_redis = false
+      options[:no_views]? @no_views = true : @no_views = false
     end
 
     def self.source_root
@@ -40,7 +47,7 @@ module Aetherg
 
     def create_views_layout
       unless @no_views
-        template "app/views/layouts/application.erb", File.join(@app_path, "/app/views/layouts/application.erb")
+        copy_file "app/views/layouts/application.erb", File.join(@app_path, "/app/views/layouts/application.erb")
       end
     end
 
@@ -86,7 +93,7 @@ module Aetherg
     end
 
     def create_redis_config_and_initializer
-      if @redis
+      unless @no_redis
         copy_file("config/redis.yml", File.join(@app_path, "config/redis.yml"))
         template("config/initializers/redis.rb", File.join(@app_path, "config/initializers/redis.rb"))
       end
@@ -111,6 +118,7 @@ module Aetherg
       create_file File.join(@app_path, "lib", ".keep")
       create_file File.join(@app_path, "db", "migrate", ".keep")
       create_file File.join(@app_path, "public", ".keep") unless @no_views
+      create_file File.join(@app_path, "public", "favicon.ico") unless @no_views
     end
   end
 end
