@@ -1,7 +1,7 @@
 source "https://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
-gem 'sinatra', '~> 1.4.7', require: 'sinatra/base'
+gem 'sinatra', '~> 2.0.0.rc2', require: 'sinatra/base'
 gem 'rake'
 <%- unless @no_database -%>
 gem 'activerecord'
