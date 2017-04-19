@@ -1,4 +1,4 @@
 module Aetherg
-  VERSION = "0.3.4"
-  BUILD   = "2017-03-24"
+  VERSION = "0.5.0.beta"
+  BUILD   = "2017-04-20"
 end
