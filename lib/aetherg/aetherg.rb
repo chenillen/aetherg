@@ -48,6 +48,8 @@ module Aetherg
     def create_views_layout
       unless @no_views
         copy_file "app/views/layouts/application.erb", File.join(@app_path, "/app/views/layouts/application.erb")
+        copy_file "app/assets/javascripts/jquery.js", File.join(@app_path, "/app/assets/javascripts/jquery.js")
+        copy_file "app/assets/javascripts/turbolinks.js", File.join(@app_path, "/app/assets/javascripts/turbolinks.js")
         copy_file "app/assets/javascripts/application.js", File.join(@app_path, "/app/assets/javascripts/application.js")
         copy_file "app/assets/stylesheets/application.css", File.join(@app_path, "/app/assets/stylesheets/application.css")
       end

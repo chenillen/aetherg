@@ -6,13 +6,13 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
     <title></title>
-    <link rel="stylesheet" href="<%= stylesheet_path 'application' %>">
+    <link rel="stylesheet" href="<%= stylesheet_path 'application' %>" data-turbolinks-track="reload">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="canonical" href="<%= $app_settings['url'] %>">
   </head>
   <body>
     <%= yield %>
-    <script src="<%= javascript_path 'application' %>" charset="utf-8"></script>
+    <script src="<%= javascript_path 'application' %>" charset="utf-8" data-turbolinks-track="reload"></script>
   </body>
 </html>
