@@ -1,35 +1,56 @@
 class <%= @name.camelcase %>::Application
+  register Sprockets::Helpers
 
-  register Sinatra::AssetPack
+  set :sprockets, Sprockets::Environment.new
+  set :assets_prefix, '/assets'
+  set :digest_assets, true
 
-  # configuration with compass
-  set :sass, Compass.sass_engine_options
-  set :sass, { :load_paths => sass[:load_paths] + [ "#{root}/app/assets/stylesheets" ] }
-  set :scss, sass
+  configure do
+    # append assets paths
+    sprockets.append_path "app/assets/stylesheets"
+    sprockets.append_path "app/assets/javascripts"
+    sprockets.append_path "app/assets/images"
+    # Other assets path, you can add below
+    # sprockets.append_path "app/assets/fonts"
 
-  # Config assets paths
-  # with sass, uglify support
-  # Also supports coffeescript
-  # assets do
-  #   serve '/js',    from: 'app/assets/javascripts'
-  #   serve '/css',   from: 'app/assets/stylesheets'
-  #   serve '/fonts', from: 'app/assets/fonts'
-  #   serve '/images', from: 'app/assets/images'
-  #
-  #   js :application, [
-  #     '/js/jquery.js',
-  #     '/js/util.js',
-  #     '/js/*.js'
-  #   ]
-  #
-  #   css :application, [
-  #     '/css/application.css'
-  #   ]
-  #
-  #   js_compression :uglify
-  #   css_compression :sass
-  #
-  #   expires 86400*365, :public
-  # end
+    # compress assets
+    sprockets.js_compressor  = :uglify
+    sprockets.css_compressor = :scss
+
+    # Configure Sprockets::Helpers (if necessary)
+    Sprockets::Helpers.configure do |config|
+      config.environment = sprockets
+      config.prefix      = assets_prefix
+      config.digest      = digest_assets
+      config.public_path = public_folder
+
+      # Force to debug mode in development mode
+      # Debug mode automatically sets
+      # expand = true, digest = false, manifest = false
+      config.debug       = true if development?
+    end
+  end
+
+  helpers do
+  include Sprockets::Helpers
+
+    # Alternative method for telling Sprockets::Helpers which
+    # Sprockets environment to use.
+    # def assets_environment
+    #   settings.sprockets
+    # end
+
+    # Use:
+    # stylesheet_path 'application'
+    # javascript_path 'application'
+    # as style and js path generator
+  end
+
+  # get assets
+  get "/assets/*" do
+    # if you changed assets_prefix, you need change it here
+    env["PATH_INFO"].sub!("/assets", "")
+    settings.sprockets.call(env)
+  end
 
 end

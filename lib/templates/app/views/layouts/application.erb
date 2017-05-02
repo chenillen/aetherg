@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv=X-UA-Compatible content="Chrome=1,IE=edge">
+    <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
     <title></title>
-
+    <link rel="stylesheet" href="<%= stylesheet_path 'application' %>">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="canonical" href="<%= $app_settings['url'] %>">
   </head>
   <body>
     <%= yield %>
+    <script src="<%= javascript_path 'application' %>" charset="utf-8"></script>
   </body>
 </html>

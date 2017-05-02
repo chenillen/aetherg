@@ -8,4 +8,5 @@ if ARGV[0] == "--version" || ARGV[0] == "-v"
   exit
 end
 
+puts "Your Sinatra app is generating..."
 Aetherg::Generator.start

@@ -2,6 +2,9 @@ source "https://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
 gem 'sinatra', '~> 2.0.0.rc2', require: 'sinatra/base'
+# sinatra-contrib gem was merged into sinatra in v2.0.0
+# requirement can be changed when you use some/all of them
+gem 'sinatra-contrib', '~> 2.0.0.rc2', require: false
 gem 'rake'
 <%- unless @no_database -%>
 gem 'activerecord'
@@ -21,12 +24,14 @@ gem 'redis'
 <%- end -%>
 
 <%- unless @no_views -%>
-# with assetpack, using sass, and uglifier
-# assetpack support by compass configure when using scss/sass import
-gem 'sinatra-assetpack', require: 'sinatra/assetpack'
-gem 'compass'
-gem 'sass'
+# Sprockets for assets pipeline
+# sass, coffescript, and compile with uglifier
+gem 'sprockets', '~> 3.7.1'
+gem 'sprockets-helpers'
 gem 'uglifier'
+gem 'sass'
+gem 'coffee-script'
+gem 'execjs'
 <%- end %>
 
 <%- unless @no_views -%>
