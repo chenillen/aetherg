@@ -29,4 +29,4 @@ Usage
 
 Copyright
 -----
-Copyright (c) 2016 Allen Chan, Inc. See LISENCE for detail.
+Copyright (c) 2017 Allen Chan, Inc. See LISENCE for detail.
