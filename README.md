@@ -1,14 +1,14 @@
-=======
-Aetherg
+
+# Aetherg
 
 [![Gem Version](https://badge.fury.io/rb/aetherg.svg)](https://badge.fury.io/rb/aetherg)
-
-======
 
 Description
 -----------
 
 Aetherg (Aether Generator) is a sinatra application generator. Light-weight MVC framework.
+
+Aetherg is supporting sinatra v2.x on the latest beta version v0.5.x
 
 Definition
 ----------
