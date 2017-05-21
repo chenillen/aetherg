@@ -1,10 +1,10 @@
 source "https://ruby.taobao.org"
 # source "https://rubygems.org" # Use rubygems if you're not in China
 
-gem 'sinatra', '~> 2.0.0.rc2', require: 'sinatra/base'
+gem 'sinatra', '~> 2.0.0', require: 'sinatra/base'
 # sinatra-contrib gem was merged into sinatra in v2.0.0
 # requirement can be changed when you use some/all of them
-gem 'sinatra-contrib', '~> 2.0.0.rc2', require: false
+gem 'sinatra-contrib', '~> 2.0.0', require: false
 gem 'rake'
 <%- unless @no_database -%>
 gem 'activerecord'
