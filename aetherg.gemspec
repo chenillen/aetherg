@@ -1,7 +1,16 @@
+# @Author: Allen C. <chenillen>
+# @Date:   2017-05-21T10:07:33+08:00
+# @Email:  chenillen@gmail.com
+# @Last modified by:   chenillen
+# @Last modified time: 2018-03-02T19:27:38+08:00
+# @Copyright: Copyright (c) 2018 by Allen C.(@chenillen). All Rights Reserved.
+
+
+
 Gem::Specification.new do |s|
   s.name        = 'aetherg'
-  s.version     = '0.5.0'
-  s.date        = '2017-05-21'
+  s.version     = '0.5.1'
+  s.date        = '2018-03-02'
   s.summary     = "Aetherg (Aether Generator) is a generator of sinatra app."
   s.description = "Aetherg (Aether Generator) is a sinatra based App generator. Light-weight for API service or full-stack Web apps. Fully supports Sinatra v2.0.0"
   s.authors     = ["Allen Chan"]

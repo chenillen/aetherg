@@ -1,3 +1,12 @@
+# @Author: Allen C. <chenillen>
+# @Date:   2017-05-02T10:59:49+08:00
+# @Email:  chenillen@gmail.com
+# @Last modified by:   chenillen
+# @Last modified time: 2018-03-02T19:32:26+08:00
+# @Copyright: Copyright (c) 2018 by Allen C.(@chenillen). All Rights Reserved.
+
+
+require 'SecureRandom'
 require File.expand_path('../array', __FILE__)
 require File.expand_path('../string', __FILE__)
 
@@ -19,7 +28,7 @@ module Aetherg
       # options.each do |key, value|
       #   instance_variable_set "@#{key.to_s}".to_sym, value
       # end
-      @database = options[:database]
+      @database = options[:database] || 'mysql'
       options[:no_database]? @no_database = true : @no_database = false
       options[:no_redis]? @no_redis = true : @no_redis = false
       options[:no_views]? @no_views = true : @no_views = false
